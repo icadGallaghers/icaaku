@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trisya Putri Saharani — Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Space Grotesk', 'sans-serif'],
+            mono: ['Space Mono', 'monospace'],
+          },
+          colors: {
+            neo: {
+              pink: '#FF6B9D',
+              hotpink: '#FF2D78',
+              lightpink: '#FFB3D1',
+              blush: '#FFE4EC',
+              cream: '#FFF0F5',
+              yellow: '#FFE156',
+              blue: '#7DD3FC',
+              green: '#86EFAC',
+              purple: '#C4B5FD',
+              black: '#000000',
+            }
+          },
+          boxShadow: {
+            'neo': '4px 4px 0px #000000',
+            'neo-lg': '6px 6px 0px #000000',
+            'neo-xl': '8px 8px 0px #000000',
+            'neo-hover': '2px 2px 0px #000000',
+            'neo-none': '0px 0px 0px #000000',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    ::selection { background: #FF6B9D; color: #000; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .neo-border { border: 3px solid #000; }
+    .neo-border-2 { border: 2px solid #000; }
+    .neo-btn { 
+      border: 3px solid #000; 
+      box-shadow: 4px 4px 0px #000; 
+      transition: all 0.1s ease; 
+    }
+    .neo-btn:hover { box-shadow: 2px 2px 0px #000; transform: translate(2px, 2px); }
+    .neo-btn:active { box-shadow: 0px 0px 0px #000; transform: translate(4px, 4px); }
+    .neo-card { 
+      border: 3px solid #000; 
+      box-shadow: 4px 4px 0px #000; 
+      transition: all 0.15s ease; 
+    }
+    .neo-card:hover { box-shadow: 6px 6px 0px #000; transform: translate(-2px, -2px); }
+    .neo-input { 
+      border: 3px solid #000; 
+      box-shadow: 3px 3px 0px #000; 
+      transition: all 0.1s ease; 
+    }
+    .neo-input:focus { 
+      box-shadow: 1px 1px 0px #000; 
+      transform: translate(2px, 2px); 
+      outline: none; 
+    }
+    .skill-bar { transition: width 1s cubic-bezier(0.4, 0, 0.2, 1); }
+    .modal-overlay { transition: opacity 200ms ease; }
+    .modal-content { transition: transform 200ms ease, opacity 200ms ease; }
+    @keyframes float { 0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)); } 50% { transform: translateY(-12px) rotate(var(--rot, 0deg)); } }
+    .float-anim { animation: float 3s ease-in-out infinite; }
+    @keyframes wiggle { 0%, 100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
+    .wiggle { animation: wiggle 2s ease-in-out infinite; }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    .slide-up { animation: slideUp 0.5s ease forwards; }
+    .slide-up-d1 { animation-delay: 0.1s; opacity: 0; }
+    .slide-up-d2 { animation-delay: 0.2s; opacity: 0; }
+    .slide-up-d3 { animation-delay: 0.3s; opacity: 0; }
+    .skill-scroll { scroll-snap-type: x mandatory; }
+    .skill-scroll > * { scroll-snap-align: center; }
+    .marquee { animation: marquee 20s linear infinite; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .sticker { 
+      display: inline-block; 
+      padding: 4px 14px; 
+      border: 2px solid #000; 
+      font-weight: 700; 
+      font-size: 11px; 
+      text-transform: uppercase; 
+      letter-spacing: 0.05em;
+      box-shadow: 3px 3px 0px #000;
+    }
+  </style>
+</head>
+<body class="font-sans bg-neo-cream text-black antialiased overflow-x-hidden">
+
+  <!-- NAVIGATION -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-neo-blush neo-border-2 border-t-0 border-l-0 border-r-0 transition-all duration-200">
+    <div class="max-w-6xl mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
+      <a href="#home" class="font-mono text-lg font-bold text-neo-hotpink neo-border bg-white px-3 py-1 shadow-neo">Trisya✿</a>
+      
+      <div class="hidden md:flex items-center gap-1">
+        <a href="#home" class="px-4 py-2 text-sm font-bold hover:bg-neo-pink hover:text-white transition-colors rounded" data-i18n="nav_home">Beranda</a>
+        <a href="#about" class="px-4 py-2 text-sm font-bold hover:bg-neo-pink hover:text-white transition-colors rounded" data-i18n="nav_about">Tentang</a>
+        <a href="#projects" class="px-4 py-2 text-sm font-bold hover:bg-neo-pink hover:text-white transition-colors rounded" data-i18n="nav_projects">Proyek</a>
+        <a href="#skills" class="px-4 py-2 text-sm font-bold hover:bg-neo-pink hover:text-white transition-colors rounded" data-i18n="nav_skills">Keahlian</a>
+        <a href="#contact" class="px-4 py-2 text-sm font-bold hover:bg-neo-pink hover:text-white transition-colors rounded" data-i18n="nav_contact">Kontak</a>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button onclick="toggleLang()" id="langBtn" class="neo-btn bg-neo-yellow text-black font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1.5">
+          <iconify-icon icon="lucide:globe" width="14"></iconify-icon>
+          <span id="langLabel">ID</span>
+        </button>
+        <button onclick="toggleMobileMenu()" class="md:hidden neo-btn bg-white w-10 h-10 rounded-lg flex items-center justify-center">
+          <iconify-icon icon="lucide:menu" width="18" id="menuIcon"></iconify-icon>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobileMenu" class="md:hidden hidden border-t-2 border-black bg-neo-blush">
+      <div class="px-4 py-3 flex flex-col gap-1">
+        <a href="#home" onclick="closeMobileMenu()" class="py-2.5 px-4 text-sm font-bold hover:bg-neo-pink hover:text-white transition-colors rounded" data-i18n="nav_home">Beranda</a>
+        <a href="#about" onclick="closeMobileMenu()" class="py-2.5 px-4 text-sm font-bold hover:bg-neo-pink hover:text-white transition-colors rounded" data-i18n="nav_about">Tentang</a>
+        <a href="#projects" onclick="closeMobileMenu()" class="py-2.5 px-4 text-sm font-bold hover:bg-neo-pink hover:text-white transition-colors rounded" data-i18n="nav_projects">Proyek</a>
+        <a href="#skills" onclick="closeMobileMenu()" class="py-2.5 px-4 text-sm font-bold hover:bg-neo-pink hover:text-white transition-colors rounded" data-i18n="nav_skills">Keahlian</a>
+        <a href="#contact" onclick="closeMobileMenu()" class="py-2.5 px-4 text-sm font-bold hover:bg-neo-pink hover:text-white transition-colors rounded" data-i18n="nav_contact">Kontak</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== HOME ========== -->
+  <section id="home" class="min-h-screen flex items-center justify-center relative pt-16 overflow-hidden">
+    <!-- Decorative shapes -->
+    <div class="absolute top-24 left-8 md:left-20 w-20 h-20 bg-neo-yellow neo-border rounded-full float-anim" style="--rot: 12deg;"></div>
+    <div class="absolute top-40 right-12 md:right-32 w-14 h-14 bg-neo-blue neo-border rounded-lg float-anim rotate-12" style="animation-delay: -1s;"></div>
+    <div class="absolute bottom-32 left-16 md:left-40 w-16 h-16 bg-neo-green neo-border rotate-45 float-anim" style="animation-delay: -2s;"></div>
+    <div class="absolute bottom-48 right-8 md:right-20 w-12 h-12 bg-neo-purple neo-border rounded-full float-anim" style="animation-delay: -0.5s;"></div>
+    <div class="absolute top-1/3 right-1/4 w-24 h-24 border-3 border-neo-lightpink rounded-full hidden md:block" style="border: 3px dashed #FFB3D1;"></div>
+    
+    <div class="relative z-10 text-center px-6 max-w-3xl mx-auto">
+      <div class="slide-up">
+        <span class="sticker bg-neo-yellow rotate-[-3deg] mb-6 inline-block">✦ Web Developer & Designer</span>
+      </div>
+      
+      <h1 class="slide-up slide-up-d1 text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[0.95] mb-6">
+        <span class="text-neo-hotpink" data-i18n="home_greeting">Hai, aku</span><br>
+        <span class="bg-white neo-border px-2 inline-block mt-2 shadow-neo-lg">Trisya Putri</span><br>
+        <span class="text-neo-hotpink">Saharani</span>
+        <span class="inline-block wiggle text-4xl md:text-5xl ml-2">🌸</span>
+      </h1>
+      
+      <p class="slide-up slide-up-d2 text-base md:text-lg text-gray-700 leading-relaxed max-w-xl mx-auto mb-10 bg-white neo-border-2 px-5 py-4 shadow-neo" data-i18n="home_desc">
+        Menciptakan pengalaman digital yang indah, fungsional, dan berkesan melalui kode dan desain.
+      </p>
+      
+      <div class="slide-up slide-up-d3 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#projects" class="neo-btn bg-neo-pink text-white font-bold text-sm px-8 py-3.5 rounded-xl flex items-center gap-2">
+          <span data-i18n="home_cta1">Lihat Proyek</span>
+          <iconify-icon icon="lucide:arrow-right" width="16"></iconify-icon>
+        </a>
+        <a href="#contact" class="neo-btn bg-white font-bold text-sm px-8 py-3.5 rounded-xl flex items-center gap-2">
+          <span data-i18n="home_cta2">Hubungi Saya</span>
+          <iconify-icon icon="lucide:heart" width="16" class="text-neo-hotpink"></iconify-icon>
+        </a>
+      </div>
+
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 float-anim">
+        <div class="neo-btn bg-neo-lightpink w-10 h-10 rounded-full flex items-center justify-center">
+          <iconify-icon icon="lucide:chevron-down" width="18"></iconify-icon>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marquee Strip -->
+  <div class="bg-neo-hotpink neo-border-2 border-l-0 border-r-0 py-3 overflow-hidden">
+    <div class="marquee whitespace-nowrap flex">
+      <span class="text-white font-bold text-sm mx-8">✿ HTML5</span>
+      <span class="text-white font-bold text-sm mx-8">✿ CSS3</span>
+      <span class="text-white font-bold text-sm mx-8">✿ JAVASCRIPT</span>
+      <span class="text-white font-bold text-sm mx-8">✿ REACT</span>
+      <span class="text-white font-bold text-sm mx-8">✿ TAILWIND</span>
+      <span class="text-white font-bold text-sm mx-8">✿ FIGMA</span>
+      <span class="text-white font-bold text-sm mx-8">✿ VUE.JS</span>
+      <span class="text-white font-bold text-sm mx-8">✿ NODE.JS</span>
+      <span class="text-white font-bold text-sm mx-8">✿ TYPESCRIPT</span>
+      <span class="text-white font-bold text-sm mx-8">✿ GIT</span>
+      <span class="text-white font-bold text-sm mx-8">✿ HTML5</span>
+      <span class="text-white font-bold text-sm mx-8">✿ CSS3</span>
+      <span class="text-white font-bold text-sm mx-8">✿ JAVASCRIPT</span>
+      <span class="text-white font-bold text-sm mx-8">✿ REACT</span>
+      <span class="text-white font-bold text-sm mx-8">✿ TAILWIND</span>
+      <span class="text-white font-bold text-sm mx-8">✿ FIGMA</span>
+      <span class="text-white font-bold text-sm mx-8">✿ VUE.JS</span>
+      <span class="text-white font-bold text-sm mx-8">✿ NODE.JS</span>
+      <span class="text-white font-bold text-sm mx-8">✿ TYPESCRIPT</span>
+      <span class="text-white font-bold text-sm mx-8">✿ GIT</span>
+    </div>
+  </div>
+
+  <!-- ========== ABOUT ========== -->
+  <section id="about" class="py-20 md:py-28 bg-white relative">
+    <div class="max-w-6xl mx-auto px-4 md:px-6">
+      <div class="text-center mb-14">
+        <span class="sticker bg-neo-pink text-white rotate-[2deg] inline-block mb-4" data-i18n="about_label">Tentang Saya</span>
+        <h2 class="text-3xl md:text-5xl font-bold tracking-tight" data-i18n="about_title">Mengenal Lebih Dekat ✿</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
+        <!-- Photo -->
+        <div class="flex justify-center">
+          <div class="relative">
+            <div class="absolute -top-4 -left-4 w-full h-full bg-neo-yellow neo-border rounded-2xl rotate-3"></div>
+            <div class="absolute -bottom-4 -right-4 w-full h-full bg-neo-lightpink neo-border rounded-2xl -rotate-3"></div>
+            <img src="https://picsum.photos/seed/trisya-neo-portrait/500/600.jpg" alt="Trisya Putri Saharani" class="relative w-64 h-80 md:w-72 md:h-96 object-cover neo-border rounded-2xl shadow-neo-xl">
+            <div class="absolute -bottom-5 left-1/2 -translate-x-1/2">
+              <span class="sticker bg-neo-green rotate-[-2deg] flex items-center gap-1.5">
+                <span class="w-2 h-2 bg-green-600 rounded-full animate-pulse"></span>
+                <span data-i18n="about_status">Tersedia untuk proyek</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Info -->
+        <div>
+          <h3 class="text-2xl md:text-3xl font-bold mb-1">Trisya Putri Saharani</h3>
+          <p class="text-neo-hotpink font-bold text-sm mb-6" data-i18n="about_role">Frontend Developer & UI/UX Designer</p>
+          
+          <div class="space-y-4 text-gray-700 text-sm leading-relaxed">
+            <p data-i18n="about_bg1">Halo! Saya Trisya, seorang pengembang web dan desainer dari Indonesia. Saya memiliki passion dalam menciptakan website yang tidak hanya cantik secara visual, tetapi juga memberikan pengalaman pengguna yang luar biasa.</p>
+            <p data-i18n="about_bg2">Saya memulai perjalanan di dunia web development sejak kuliah, dan sejak itu terus mengembangkan keahlian dalam berbagai teknologi modern. Saya percaya bahwa desain yang baik adalah desain yang menyederhanakan kompleksitas.</p>
+            <p data-i18n="about_bg3">Di luar coding, saya senang mengikuti perkembangan tren desain, membaca, dan mengexplore kreativitas melalui berbagai medium digital.</p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4 mt-8">
+            <div class="neo-card bg-neo-blush rounded-xl p-4 text-center">
+              <p class="text-3xl font-bold text-neo-hotpink">3+</p>
+              <p class="text-xs font-bold text-gray-500 mt-1" data-i18n="about_stat1">Tahun Pengalaman</p>
+            </div>
+            <div class="neo-card bg-neo-blush rounded-xl p-4 text-center">
+              <p class="text-3xl font-bold text-neo-hotpink">20+</p>
+              <p class="text-xs font-bold text-gray-500 mt-1" data-i18n="about_stat2">Proyek Selesai</p>
+            </div>
+            <div class="neo-card bg-neo-blush rounded-xl p-4 text-center">
+              <p class="text-3xl font-bold text-neo-hotpink">15+</p>
+              <p class="text-xs font-bold text-gray-500 mt-1" data-i18n="about_stat3">Klien Puas</p>
+            </div>
+            <div class="neo-card bg-neo-blush rounded-xl p-4 text-center">
+              <p class="text-3xl font-bold text-neo-hotpink">5+</p>
+              <p class="text-xs font-bold text-gray-500 mt-1" data-i18n="about_stat4">Sertifikasi</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PROJECTS ========== -->
+  <section id="projects" class="py-20 md:py-28 bg-neo-cream relative">
+    <div class="max-w-6xl mx-auto px-4 md:px-6">
+      <div class="text-center mb-14">
+        <span class="sticker bg-neo-blue rotate-[-2deg] inline-block mb-4" data-i18n="projects_label">Proyek Saya</span>
+        <h2 class="text-3xl md:text-5xl font-bold tracking-tight" data-i18n="projects_title">Karya Terbaru ☺</h2>
+        <p class="text-gray-600 text-sm mt-4 max-w-md mx-auto font-medium" data-i18n="projects_desc">Beberapa proyek website yang telah saya kerjakan dengan penuh dedikasi.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="projectGrid"></div>
+    </div>
+  </section>
+
+  <!-- Project Modal -->
+  <div id="projectModal" class="fixed inset-0 z-[100] hidden">
+    <div class="modal-overlay absolute inset-0 bg-black/40" onclick="closeModal()"></div>
+    <div class="modal-content absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[92%] max-w-2xl max-h-[88vh] overflow-y-auto bg-white neo-border rounded-2xl shadow-neo-xl">
+      <div class="relative">
+        <img id="modalImage" src="" alt="" class="w-full h-52 md:h-64 object-cover rounded-t-[13px]">
+        <button onclick="closeModal()" class="absolute top-3 right-3 neo-btn bg-white w-9 h-9 rounded-lg flex items-center justify-center">
+          <iconify-icon icon="lucide:x" width="18"></iconify-icon>
+        </button>
+      </div>
+      <div class="p-6 md:p-8">
+        <div class="flex flex-wrap gap-2 mb-4" id="modalTags"></div>
+        <h3 id="modalTitle" class="text-2xl font-bold mb-3"></h3>
+        <p id="modalDesc" class="text-gray-700 text-sm leading-relaxed mb-6"></p>
+        <div class="grid grid-cols-2 gap-3 mb-6" id="modalDetails"></div>
+        <div class="flex flex-wrap gap-3">
+          <a id="modalLink" href="#" target="_blank" class="neo-btn bg-neo-pink text-white font-bold text-sm px-6 py-2.5 rounded-xl flex items-center gap-2">
+            <span data-i18n="modal_live">Live Demo</span>
+            <iconify-icon icon="lucide:external-link" width="14"></iconify-icon>
+          </a>
+          <a id="modalGithub" href="#" target="_blank" class="neo-btn bg-white font-bold text-sm px-6 py-2.5 rounded-xl flex items-center gap-2">
+            <iconify-icon icon="lucide:github" width="16"></iconify-icon>
+            GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SKILLS ========== -->
+  <section id="skills" class="py-20 md:py-28 bg-white relative overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 md:px-6">
+      <div class="text-center mb-10">
+        <span class="sticker bg-neo-purple rotate-[3deg] inline-block mb-4" data-i18n="skills_label">Keahlian</span>
+        <h2 class="text-3xl md:text-5xl font-bold tracking-tight" data-i18n="skills_title">Yang Saya Kuasai ✌</h2>
+        <p class="text-gray-600 text-sm mt-4 max-w-md mx-auto font-medium" data-i18n="skills_desc">Geser kiri/kanan, lalu klik untuk lihat pengalaman!</p>
+      </div>
+
+      <div class="flex items-center justify-center gap-3 mb-8">
+        <button onclick="scrollSkills(-1)" class="neo-btn bg-neo-yellow w-11 h-11 rounded-xl flex items-center justify-center">
+          <iconify-icon icon="lucide:chevron-left" width="20"></iconify-icon>
+        </button>
+        <button onclick="scrollSkills(1)" class="neo-btn bg-neo-yellow w-11 h-11 rounded-xl flex items-center justify-center">
+          <iconify-icon icon="lucide:chevron-right" width="20"></iconify-icon>
+        </button>
+      </div>
+
+      <div id="skillScroll" class="skill-scroll flex gap-4 overflow-x-auto no-scrollbar pb-4 px-1"></div>
+
+      <div id="skillDetail" class="hidden mt-10 max-w-md mx-auto">
+        <div class="neo-card bg-neo-cream rounded-2xl p-6 text-center">
+          <div id="skillDetailIcon" class="w-16 h-16 neo-border rounded-xl bg-white flex items-center justify-center mx-auto mb-4 shadow-neo"></div>
+          <h4 id="skillDetailName" class="text-xl font-bold mb-1"></h4>
+          <p id="skillDetailPercent" class="text-4xl font-bold text-neo-hotpink mb-4"></p>
+          <div class="w-full bg-white neo-border-2 rounded-xl h-5 overflow-hidden">
+            <div id="skillDetailBar" class="skill-bar h-full bg-neo-pink neo-border-r-0 rounded-r-lg" style="width: 0%; border-right: none;"></div>
+          </div>
+          <p id="skillDetailDesc" class="text-gray-600 text-xs mt-4 leading-relaxed font-medium"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT ========== -->
+  <section id="contact" class="py-20 md:py-28 bg-neo-cream relative">
+    <div class="max-w-6xl mx-auto px-4 md:px-6">
+      <div class="text-center mb-14">
+        <span class="sticker bg-neo-green rotate-[-3deg] inline-block mb-4" data-i18n="contact_label">Kontak</span>
+        <h2 class="text-3xl md:text-5xl font-bold tracking-tight" data-i18n="contact_title">Mari Terhubung ♡</h2>
+        <p class="text-gray-600 text-sm mt-4 max-w-md mx-auto font-medium" data-i18n="contact_desc">Punya proyek menarik? Jangan ragu untuk menghubungi saya.</p>
+      </div>
+
+      <div class="grid md:grid-cols-5 gap-8">
+        <!-- Contact Info -->
+        <div class="md:col-span-2 space-y-5">
+          <div class="neo-card bg-white rounded-xl p-5 flex items-start gap-4">
+            <div class="w-11 h-11 neo-border bg-neo-pink rounded-lg flex items-center justify-center flex-shrink-0 shadow-neo">
+              <iconify-icon icon="lucide:mail" width="18" class="text-white"></iconify-icon>
+            </div>
+            <div>
+              <p class="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1" data-i18n="contact_email_label">Email</p>
+              <p class="text-sm font-bold text-gray-800">trisya.saharani@email.com</p>
+            </div>
+          </div>
+
+          <div class="neo-card bg-white rounded-xl p-5 flex items-start gap-4">
+            <div class="w-11 h-11 neo-border bg-neo-blue rounded-lg flex items-center justify-center flex-shrink-0 shadow-neo">
+              <iconify-icon icon="lucide:phone" width="18" class="text-black"></iconify-icon>
+            </div>
+            <div>
+              <p class="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1" data-i18n="contact_phone_label">Telepon</p>
+              <p class="text-sm font-bold text-gray-800">+62 812-3456-7890</p>
+            </div>
+          </div>
+
+          <div class="neo-card bg-white rounded-xl p-5 flex items-start gap-4">
+            <div class="w-11 h-11 neo-border bg-neo-purple rounded-lg flex items-center justify-center flex-shrink-0 shadow-neo">
+              <iconify-icon icon="lucide:map-pin" width="18" class="text-black"></iconify-icon>
+            </div>
+            <div>
+              <p class="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1" data-i18n="contact_loc_label">Lokasi</p>
+              <p class="text-sm font-bold text-gray-800" data-i18n="contact_loc_value">Jakarta, Indonesia</p>
+            </div>
+          </div>
+
+          <div class="flex gap-3 pt-2">
+            <a href="#" class="neo-btn bg-neo-pink text-white w-10 h-10 rounded-xl flex items-center justify-center"><iconify-icon icon="lucide:instagram" width="16"></iconify-icon></a>
+            <a href="#" class="neo-btn bg-neo-blue w-10 h-10 rounded-xl flex items-center justify-center"><iconify-icon icon="lucide:linkedin" width="16"></iconify-icon></a>
+            <a href="#" class="neo-btn bg-neo-purple w-10 h-10 rounded-xl flex items-center justify-center"><iconify-icon icon="lucide:github" width="16"></iconify-icon></a>
+            <a href="#" class="neo-btn bg-neo-yellow w-10 h-10 rounded-xl flex items-center justify-center"><iconify-icon icon="lucide:dribbble" width="16"></iconify-icon></a>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="md:col-span-3">
+          <form id="contactForm" onsubmit="handleSubmit(event)" class="space-y-4 bg-white neo-card rounded-2xl p-6 md:p-8">
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="text-xs font-bold text-gray-500 mb-1.5 block uppercase tracking-wider" data-i18n="form_name">Nama</label>
+                <input type="text" required class="neo-input w-full px-4 py-3 rounded-xl bg-neo-cream text-sm font-medium placeholder:text-gray-300" placeholder="John Doe">
+              </div>
+              <div>
+                <label class="text-xs font-bold text-gray-500 mb-1.5 block uppercase tracking-wider" data-i18n="form_email">Email</label>
+                <input type="email" required class="neo-input w-full px-4 py-3 rounded-xl bg-neo-cream text-sm font-medium placeholder:text-gray-300" placeholder="john@email.com">
+              </div>
+            </div>
+            <div>
+              <label class="text-xs font-bold text-gray-500 mb-1.5 block uppercase tracking-wider" data-i18n="form_subject">Subjek</label>
+              <input type="text" required class="neo-input w-full px-4 py-3 rounded-xl bg-neo-cream text-sm font-medium placeholder:text-gray-300" data-i18n-placeholder="form_subject_ph" placeholder="Proyek website">
+            </div>
+            <div>
+              <label class="text-xs font-bold text-gray-500 mb-1.5 block uppercase tracking-wider" data-i18n="form_message">Pesan</label>
+              <textarea rows="5" required class="neo-input w-full px-4 py-3 rounded-xl bg-neo-cream text-sm font-medium resize-none placeholder:text-gray-300" data-i18n-placeholder="form_msg_ph" placeholder="Tulis pesan Anda di sini..."></textarea>
+            </div>
+            <button type="submit" id="submitBtn" class="neo-btn bg-neo-pink text-white font-bold text-sm px-8 py-3.5 rounded-xl w-full sm:w-auto flex items-center justify-center gap-2">
+              <span data-i18n="form_send">Kirim Pesan</span>
+              <iconify-icon icon="lucide:send" width="16"></iconify-icon>
+            </button>
+          </form>
+
+          <div id="successMsg" class="hidden mt-5 neo-card bg-neo-green rounded-xl p-5 flex items-center gap-3">
+            <div class="w-10 h-10 neo-border bg-white rounded-lg flex items-center justify-center flex-shrink-0 shadow-neo">
+              <iconify-icon icon="lucide:check-circle" width="20" class="text-green-600"></iconify-icon>
+            </div>
+            <div>
+              <p class="text-sm font-bold text-gray-800" data-i18n="form_success">Pesan berhasil dikirim!</p>
+              <p class="text-xs text-gray-600 font-medium" data-i18n="form_success_desc">Saya akan segera merespons. Terima kasih!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="bg-black text-white py-12 neo-border-2 border-b-0 border-l-0 border-r-0">
+    <div class="max-w-6xl mx-auto px-4 md:px-6">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="text-center md:text-left">
+          <span class="font-mono text-lg font-bold bg-neo-pink text-black neo-border px-3 py-1 inline-block shadow-neo">Trisya✿</span>
+          <p class="text-xs text-gray-400 mt-3 font-medium" data-i18n="footer_desc">Menciptakan pengalaman digital yang berkesan.</p>
+        </div>
+        <div class="flex items-center gap-5">
+          <a href="#home" class="text-xs font-bold text-gray-400 hover:text-neo-pink transition-colors" data-i18n="nav_home">Beranda</a>
+          <a href="#about" class="text-xs font-bold text-gray-400 hover:text-neo-pink transition-colors" data-i18n="nav_about">Tentang</a>
+          <a href="#projects" class="text-xs font-bold text-gray-400 hover:text-neo-pink transition-colors" data-i18n="nav_projects">Proyek</a>
+          <a href="#contact" class="text-xs font-bold text-gray-400 hover:text-neo-pink transition-colors" data-i18n="nav_contact">Kontak</a>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+        <p class="text-xs text-gray-500 font-medium">&copy; 2025 Trisya Putri Saharani. <span data-i18n="footer_rights">Semua hak dilindungi.</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== JAVASCRIPT ========== -->
+  <script>
+    const translations = {
+      id: {
+        nav_home: "Beranda", nav_about: "Tentang", nav_projects: "Proyek", nav_skills: "Keahlian", nav_contact: "Kontak",
+        home_greeting: "Hai, aku",
+        home_desc: "Menciptakan pengalaman digital yang indah, fungsional, dan berkesan melalui kode dan desain.",
+        home_cta1: "Lihat Proyek", home_cta2: "Hubungi Saya",
+        about_label: "Tentang Saya", about_title: "Mengenal Lebih Dekat ✿",
+        about_role: "Frontend Developer & UI/UX Designer",
+        about_status: "Tersedia untuk proyek",
+        about_bg1: "Halo! Saya Trisya, seorang pengembang web dan desainer dari Indonesia. Saya memiliki passion dalam menciptakan website yang tidak hanya cantik secara visual, tetapi juga memberikan pengalaman pengguna yang luar biasa.",
+        about_bg2: "Saya memulai perjalanan di dunia web development sejak kuliah, dan sejak itu terus mengembangkan keahlian dalam berbagai teknologi modern. Saya percaya bahwa desain yang baik adalah desain yang menyederhanakan kompleksitas.",
+        about_bg3: "Di luar coding, saya senang mengikuti perkembangan tren desain, membaca, dan mengexplore kreativitas melalui berbagai medium digital.",
+        about_stat1: "Tahun Pengalaman", about_stat2: "Proyek Selesai", about_stat3: "Klien Puas", about_stat4: "Sertifikasi",
+        projects_label: "Proyek Saya", projects_title: "Karya Terbaru ☺",
+        projects_desc: "Beberapa proyek website yang telah saya kerjakan dengan penuh dedikasi.",
+        skills_label: "Keahlian", skills_title: "Yang Saya Kuasai ✌",
+        skills_desc: "Geser kiri/kanan, lalu klik untuk lihat pengalaman!",
+        contact_label: "Kontak", contact_title: "Mari Terhubung ♡",
+        contact_desc: "Punya proyek menarik? Jangan ragu untuk menghubungi saya.",
+        contact_email_label: "Email", contact_phone_label: "Telepon", contact_loc_label: "Lokasi", contact_loc_value: "Jakarta, Indonesia",
+        form_name: "Nama", form_email: "Email", form_subject: "Subjek", form_subject_ph: "Proyek website",
+        form_message: "Pesan", form_msg_ph: "Tulis pesan Anda di sini...",
+        form_send: "Kirim Pesan", form_success: "Pesan berhasil dikirim!", form_success_desc: "Saya akan segera merespons. Terima kasih!",
+        modal_live: "Live Demo", footer_desc: "Menciptakan pengalaman digital yang berkesan.", footer_rights: "Semua hak dilindungi.",
+        detail_type: "Tipe", detail_year: "Tahun", detail_client: "Klien", detail_duration: "Durasi",
+      },
+      en: {
+        nav_home: "Home", nav_about: "About", nav_projects: "Projects", nav_skills: "Skills", nav_contact: "Contact",
+        home_greeting: "Hey, I'm",
+        home_desc: "Creating beautiful, functional, and memorable digital experiences through code and design.",
+        home_cta1: "View Projects", home_cta2: "Contact Me",
+        about_label: "About Me", about_title: "Get To Know Me ✿",
+        about_role: "Frontend Developer & UI/UX Designer",
+        about_status: "Available for projects",
+        about_bg1: "Hi! I'm Trisya, a web developer and designer from Indonesia. I have a passion for creating websites that are not only visually beautiful but also deliver an exceptional user experience.",
+        about_bg2: "I started my journey in web development since college, and have been continuously developing skills in various modern technologies ever since. I believe good design is design that simplifies complexity.",
+        about_bg3: "Outside of coding, I enjoy keeping up with design trends, reading, and exploring creativity through various digital mediums.",
+        about_stat1: "Years Experience", about_stat2: "Projects Done", about_stat3: "Happy Clients", about_stat4: "Certifications",
+        projects_label: "My Projects", projects_title: "Recent Works ☺",
+        projects_desc: "Some of the website projects I've worked on with full dedication.",
+        skills_label: "Skills", skills_title: "What I Master ✌",
+        skills_desc: "Scroll left/right, then click to see experience level!",
+        contact_label: "Contact", contact_title: "Let's Connect ♡",
+        contact_desc: "Have an interesting project? Don't hesitate to reach out.",
+        contact_email_label: "Email", contact_phone_label: "Phone", contact_loc_label: "Location", contact_loc_value: "Jakarta, Indonesia",
+        form_name: "Name", form_email: "Email", form_subject: "Subject", form_subject_ph: "Website project",
+        form_message: "Message", form_msg_ph: "Write your message here...",
+        form_send: "Send Message", form_success: "Message sent successfully!", form_success_desc: "I'll get back to you soon. Thank you!",
+        modal_live: "Live Demo", footer_desc: "Creating memorable digital experiences.", footer_rights: "All rights reserved.",
+        detail_type: "Type", detail_year: "Year", detail_client: "Client", detail_duration: "Duration",
+      }
+    };
+
+    let currentLang = 'id';
+
+    function toggleLang() {
+      currentLang = currentLang === 'id' ? 'en' : 'id';
+      document.getElementById('langLabel').textContent = currentLang.toUpperCase();
+      document.documentElement.lang = currentLang;
+      applyTranslations();
+    }
+
+    function applyTranslations() {
+      const t = translations[currentLang];
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key]) el.textContent = t[key];
+      });
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (t[key]) el.placeholder = t[key];
+      });
+      renderProjects();
+      renderSkills();
+    }
+
+    // Mobile Menu
+    let menuOpen = false;
+    function toggleMobileMenu() {
+      menuOpen = !menuOpen;
+      document.getElementById('mobileMenu').classList.toggle('hidden');
+      document.getElementById('menuIcon').setAttribute('icon', menuOpen ? 'lucide:x' : 'lucide:menu');
+    }
+    function closeMobileMenu() {
+      menuOpen = false;
+      document.getElementById('mobileMenu').classList.add('hidden');
+      document.getElementById('menuIcon').setAttribute('icon', 'lucide:menu');
+    }
+
+    // Projects
+    const projects = [
+      { id:1, image:"https://picsum.photos/seed/neo-ecommerce/800/600.jpg", title_id:"Toko Fashion Online", title_en:"Fashion E-Commerce", tags:["React","Tailwind","Node.js"], desc_id:"Website e-commerce fashion dengan fitur keranjang belanja, filter produk, pencarian, dan pembayaran terintegrasi. Desain neobrutalism yang bold dan eye-catching.", desc_en:"Fashion e-commerce with shopping cart, product filters, search, and integrated payment. Bold neobrutalism design that's eye-catching.", type_id:"E-Commerce", type_en:"E-Commerce", year:"2024", client_id:"Fashion Brand Lokal", client_en:"Local Fashion Brand", duration_id:"3 bulan", duration_en:"3 months", color:"bg-neo-pink" },
+      { id:2, image:"https://picsum.photos/seed/neo-restaurant/800/600.jpg", title_id:"Website Restoran", title_en:"Restaurant Website", tags:["HTML","CSS","JavaScript"], desc_id:"Landing page restoran dengan menu interaktif, reservasi online, galeri foto makanan. Responsif dan cepat dimuat dengan sentuhan playful.", desc_en:"Restaurant landing page with interactive menu, online reservation, food gallery. Responsive and fast with a playful touch.", type_id:"Landing Page", type_en:"Landing Page", year:"2024", client_id:"Restoran Fine Dining", client_en:"Fine Dining Restaurant", duration_id:"1.5 bulan", duration_en:"1.5 months", color:"bg-neo-yellow" },
+      { id:3, image:"https://picsum.photos/seed/neo-portfolio/800/600.jpg", title_id:"Portfolio Kreatif", title_en:"Creative Portfolio", tags:["Next.js","Framer Motion","Prisma"], desc_id:"Website portfolio fotografer dengan galeri interaktif, lightbox, animasi scroll, dan CMS custom untuk mengelola karya.", desc_en:"Photographer portfolio with interactive gallery, lightbox, scroll animations, and custom CMS.", type_id:"Portfolio", type_en:"Portfolio", year:"2023", client_id:"Fotografer Freelance", client_en:"Freelance Photographer", duration_id:"2 bulan", duration_en:"2 months", color:"bg-neo-purple" },
+      { id:4, image:"https://picsum.photos/seed/neo-dashboard/800/600.jpg", title_id:"Dashboard Admin", title_en:"Admin Dashboard", tags:["Vue.js","Chart.js","Firebase"], desc_id:"Dashboard admin untuk mengelola data pengguna, analytics real-time, grafik penjualan, dan manajemen konten dengan dark mode.", desc_en:"Admin dashboard for user data, real-time analytics, sales charts, content management with dark mode.", type_id:"Web App", type_en:"Web App", year:"2024", client_id:"Startup Teknologi", client_en:"Tech Startup", duration_id:"2.5 bulan", duration_en:"2.5 months", color:"bg-neo-blue" },
+      { id:5, image:"https://picsum.photos/seed/neo-blog-travel/800/600.jpg", title_id:"Blog Travel", title_en:"Travel Blog", tags:["WordPress","PHP","MySQL"], desc_id:"Blog travel personal dengan desain editorial menarik, kategori destinasi, sistem komentar, dan integrasi media sosial.", desc_en:"Personal travel blog with attractive editorial design, destination categories, comments, social integration.", type_id:"Blog", type_en:"Blog", year:"2023", client_id:"Travel Blogger", client_en:"Travel Blogger", duration_id:"1 bulan", duration_en:"1 month", color:"bg-neo-green" },
+      { id:6, image:"https://picsum.photos/seed/neo-health-app/800/600.jpg", title_id:"Aplikasi Kesehatan", title_en:"Health & Fitness App", tags:["React Native","Express","MongoDB"], desc_id:"Aplikasi web kesehatan dengan tracking kalori, jadwal olahraga, progress tracker, dan reminder harian yang ramah pengguna.", desc_en:"Health web app with calorie tracking, workout schedule, progress tracker, and daily reminders.", type_id:"Web App", type_en:"Web App", year:"2024", client_id:"Gym & Fitness Center", client_en:"Gym & Fitness Center", duration_id:"3.5 bulan", duration_en:"3.5 months", color:"bg-neo-lightpink" },
+    ];
+
+    function renderProjects() {
+      const grid = document.getElementById('projectGrid');
+      grid.innerHTML = projects.map(p => `
+        <div class="neo-card bg-white rounded-2xl overflow-hidden cursor-pointer group" onclick="openModal(${p.id})">
+          <div class="relative overflow-hidden aspect-[4/3]">
+            <img src="${p.image}" alt="${currentLang==='id'?p.title_id:p.title_en}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute top-3 left-3">
+              <span class="sticker ${p.color} text-white text-[10px] rotate-[-2deg]">${currentLang==='id'?p.type_id:p.type_en}</span>
+            </div>
+          </div>
+          <div class="p-5">
+            <div class="flex flex-wrap gap-1.5 mb-3">
+              ${p.tags.map(t=>`<span class="px-2.5 py-0.5 neo-border-2 bg-neo-cream text-[10px] font-bold rounded-md">${t}</span>`).join('')}
+            </div>
+            <h3 class="text-lg font-bold group-hover:text-neo-hotpink transition-colors">${currentLang==='id'?p.title_id:p.title_en}</h3>
+            <div class="flex items-center gap-1 mt-2 text-neo-hotpink font-bold text-xs opacity-0 group-hover:opacity-100 transition-opacity">
+              <span>${currentLang==='id'?'Lihat Detail':'View Details'}</span>
+              <iconify-icon icon="lucide:arrow-right" width="12"></iconify-icon>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function openModal(id) {
+      const p = projects.find(x=>x.id===id);
+      if(!p) return;
+      document.getElementById('modalImage').src = p.image;
+      document.getElementById('modalTitle').textContent = currentLang==='id'?p.title_id:p.title_en;
+      document.getElementById('modalDesc').textContent = currentLang==='id'?p.desc_id:p.desc_en;
+      document.getElementById('modalTags').innerHTML = p.tags.map(t=>`<span class="sticker bg-neo-cream text-[10px]">${t}</span>`).join('');
+      const t = translations[currentLang];
+      document.getElementById('modalDetails').innerHTML = `
+        <div class="neo-border-2 rounded-lg p-3 bg-neo-cream"><p class="text-[10px] font-bold text-gray-400 uppercase tracking-wider">${t.detail_type}</p><p class="text-sm font-bold mt-0.5">${currentLang==='id'?p.type_id:p.type_en}</p></div>
+        <div class="neo-border-2 rounded-lg p-3 bg-neo-cream"><p class="text-[10px] font-bold text-gray-400 uppercase tracking-wider">${t.detail_year}</p><p class="text-sm font-bold mt-0.5">${p.year}</p></div>
+        <div class="neo-border-2 rounded-lg p-3 bg-neo-cream"><p class="text-[10px] font-bold text-gray-400 uppercase tracking-wider">${t.detail_client}</p><p class="text-sm font-bold mt-0.5">${currentLang==='id'?p.client_id:p.client_en}</p></div>
+        <div class="neo-border-2 rounded-lg p-3 bg-neo-cream"><p class="text-[10px] font-bold text-gray-400 uppercase tracking-wider">${t.detail_duration}</p><p class="text-sm font-bold mt-0.5">${currentLang==='id'?p.duration_id:p.duration_en}</p></div>
+      `;
+      document.getElementById('projectModal').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('projectModal').classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
+
+    // Skills
+    const skillColors = ['bg-neo-pink','bg-neo-yellow','bg-neo-blue','bg-neo-green','bg-neo-purple','bg-neo-lightpink','bg-neo-yellow','bg-neo-blue','bg-neo-purple','bg-neo-green','bg-neo-pink','bg-neo-lightpink'];
+    const skills = [
+      { name:"HTML5", icon:"logos:html-5", percent:95, desc_id:"Mahir dalam semantic HTML, accessibility, dan struktur dokumen yang baik.", desc_en:"Proficient in semantic HTML, accessibility, and good document structure." },
+      { name:"CSS3", icon:"logos:css-3", percent:92, desc_id:"Expert dalam Flexbox, Grid, animasi, responsive design, dan CSS modern.", desc_en:"Expert in Flexbox, Grid, animations, responsive design, and modern CSS." },
+      { name:"JavaScript", icon:"logos:javascript", percent:88, desc_id:"Kuasai ES6+, DOM manipulation, async/await, dan konsep OOP.", desc_en:"Master ES6+, DOM manipulation, async/await, and OOP concepts." },
+      { name:"React.js", icon:"logos:react", percent:85, desc_id:"Berpengalaman dengan hooks, state management, dan component architecture.", desc_en:"Experienced with hooks, state management, and component architecture." },
+      { name:"Vue.js", icon:"logos:vue", percent:78, desc_id:"Menguasai Composition API, Vuex, dan ekosistem Vue.", desc_en:"Proficient in Composition API, Vuex, and Vue ecosystem." },
+      { name:"Tailwind CSS", icon:"logos:tailwindcss-icon", percent:93, desc_id:"Sangat mahir dalam utility-first CSS dan kustomisasi konfigurasi.", desc_en:"Highly skilled in utility-first CSS and configuration customization." },
+      { name:"Figma", icon:"logos:figma", percent:82, desc_id:"Mampu membuat UI design, prototyping, dan design system.", desc_en:"Able to create UI design, prototyping, and design systems." },
+      { name:"Node.js", icon:"logos:nodejs-icon", percent:72, desc_id:"Menguasai Express.js, REST API, dan basic backend development.", desc_en:"Proficient in Express.js, REST API, and basic backend development." },
+      { name:"TypeScript", icon:"logos:typescript-icon", percent:76, desc_id:"Pengalaman dengan type system, generics, dan integrasi dengan React.", desc_en:"Experience with type system, generics, and React integration." },
+      { name:"Git", icon:"logos:git-icon", percent:87, desc_id:"Mahir dalam version control, branching strategy, dan kolaborasi tim.", desc_en:"Proficient in version control, branching strategy, and team collaboration." },
+      { name:"PHP", icon:"logos:php", percent:68, desc_id:"Menguasai dasar PHP, Laravel, dan integrasi database.", desc_en:"Proficient in PHP basics, Laravel, and database integration." },
+      { name:"MySQL", icon:"logos:mysql-icon", percent:70, desc_id:"Pengalaman dengan query, normalization, dan database management.", desc_en:"Experience with queries, normalization, and database management." },
+    ];
+
+    let selectedSkill = null;
+
+    function renderSkills() {
+      const container = document.getElementById('skillScroll');
+      container.innerHTML = skills.map((s,i) => `
+        <button onclick="selectSkill(${i})" class="flex-shrink-0 w-32 md:w-40 neo-card ${selectedSkill===i ? 'bg-neo-pink text-white shadow-neo-xl scale-105' : 'bg-white hover:shadow-neo-lg'} rounded-2xl p-4 text-center cursor-pointer transition-all duration-150">
+          <div class="w-12 h-12 neo-border ${selectedSkill===i ? 'bg-white/20' : 'bg-neo-cream'} rounded-xl flex items-center justify-center mx-auto mb-2">
+            <iconify-icon icon="${s.icon}" width="26"></iconify-icon>
+          </div>
+          <p class="text-xs font-bold ${selectedSkill===i ? 'text-white' : ''}">${s.name}</p>
+          <p class="text-[10px] font-bold ${selectedSkill===i ? 'text-white/70' : 'text-gray-400'} mt-0.5">${s.percent}%</p>
+        </button>
+      `).join('');
+    }
+
+    function selectSkill(index) {
+      selectedSkill = index;
+      const s = skills[index];
+      const detail = document.getElementById('skillDetail');
+      detail.classList.remove('hidden');
+      document.getElementById('skillDetailIcon').innerHTML = `<iconify-icon icon="${s.icon}" width="30"></iconify-icon>`;
+      document.getElementById('skillDetailName').textContent = s.name;
+      document.getElementById('skillDetailPercent').textContent = s.percent + '%';
+      document.getElementById('skillDetailDesc').textContent = currentLang==='id'?s.desc_id:s.desc_en;
+      const bar = document.getElementById('skillDetailBar');
+      bar.style.width = '0%';
+      requestAnimationFrame(()=>{ requestAnimationFrame(()=>{ bar.style.width = s.percent+'%'; }); });
+      renderSkills();
+      detail.scrollIntoView({ behavior:'smooth', block:'nearest' });
+    }
+
+    function scrollSkills(dir) {
+      document.getElementById('skillScroll').scrollBy({ left: dir*180, behavior:'smooth' });
+    }
+
+    // Contact Form
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      btn.disabled = true;
+      btn.innerHTML = `<iconify-icon icon="lucide:loader-2" width="16" class="animate-spin"></iconify-icon> <span>${currentLang==='id'?'Mengirim...':'Sending...'}</span>`;
+      setTimeout(()=>{
+        btn.disabled = false;
+        btn.innerHTML = `<span data-i18n="form_send">${currentLang==='id'?'Kirim Pesan':'Send Message'}</span> <iconify-icon icon="lucide:send" width="16"></iconify-icon>`;
+        document.getElementById('contactForm').reset();
+        document.getElementById('successMsg').classList.remove('hidden');
+        setTimeout(()=>{ document.getElementById('successMsg').classList.add('hidden'); }, 5000);
+      }, 1500);
+    }
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){ entry.target.classList.add('slide-up'); observer.unobserve(entry.target); }
+      });
+    }, { threshold:0.1, rootMargin:'0px 0px -40px 0px' });
+
+    document.addEventListener('DOMContentLoaded', ()=>{
+      renderProjects();
+      renderSkills();
+      document.querySelectorAll('#projectGrid > div, #about .grid > div').forEach(el=>{
+        el.style.opacity = '0'; observer.observe(el);
+      });
+    });
+  </script>
+</body>
+</html>
