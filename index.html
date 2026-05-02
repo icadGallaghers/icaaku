@@ -208,7 +208,6 @@
       </div>
 
       <div class="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
-        <!-- Photo -->
         <div class="flex justify-center">
           <div class="relative">
             <div class="absolute -top-4 -left-4 w-full h-full bg-neo-yellow neo-border rounded-2xl rotate-3"></div>
@@ -223,7 +222,6 @@
           </div>
         </div>
 
-        <!-- Info -->
         <div>
           <h3 class="text-2xl md:text-3xl font-bold mb-1">Trisya Putri Saharani</h3>
           <p class="text-neo-hotpink font-bold text-sm mb-6" data-i18n="about_role">INI AKU</p>
@@ -236,19 +234,19 @@
 
           <div class="grid grid-cols-2 gap-4 mt-8">
             <div class="neo-card bg-neo-blush rounded-xl p-4 text-center">
-              <p class="text-3xl font-bold text-neo-hotpink">1.2K</p>
+              <p class="text-3xl font-bold text-neo-hotpink">1.054K</p>
               <p class="text-xs font-bold text-gray-500 mt-1" data-i18n="about_stat1">Pengikut</p>
             </div>
             <div class="neo-card bg-neo-blush rounded-xl p-4 text-center">
-              <p class="text-3xl font-bold text-neo-hotpink">890</p>
+              <p class="text-3xl font-bold text-neo-hotpink">703</p>
               <p class="text-xs font-bold text-gray-500 mt-1" data-i18n="about_stat2">Mengikuti</p>
             </div>
             <div class="neo-card bg-neo-blush rounded-xl p-4 text-center">
-              <p class="text-3xl font-bold text-neo-hotpink">2</p>
+              <p class="text-3xl font-bold text-neo-hotpink">4</p>
               <p class="text-xs font-bold text-gray-500 mt-1" data-i18n="about_stat3">Tahun Jadi OSIS</p>
             </div>
             <div class="neo-card bg-neo-blush rounded-xl p-4 text-center">
-              <p class="text-3xl font-bold text-neo-hotpink">16</p>
+              <p class="text-3xl font-bold text-neo-hotpink">17</p>
               <p class="text-xs font-bold text-gray-500 mt-1" data-i18n="about_stat4">Tahun (Umur)</p>
             </div>
           </div>
@@ -257,7 +255,7 @@
     </div>
   </section>
 
-  <!-- ========== MEDIA (was PROJECTS) ========== -->
+  <!-- ========== MEDIA ========== -->
   <section id="projects" class="py-20 md:py-28 bg-neo-cream relative">
     <div class="max-w-6xl mx-auto px-4 md:px-6">
       <div class="text-center mb-14">
@@ -273,9 +271,9 @@
   <!-- Media Modal -->
   <div id="projectModal" class="fixed inset-0 z-[100] hidden">
     <div class="modal-overlay absolute inset-0 bg-black/40" onclick="closeModal()"></div>
-    <div class="modal-content absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[92%] max-w-2xl max-h-[88vh] overflow-y-auto bg-white neo-border rounded-2xl shadow-neo-xl">
+    <div class="modal-content absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[92%] max-w-2xl max-h-[90vh] overflow-y-auto bg-white neo-border rounded-2xl shadow-neo-xl">
       <div class="relative">
-        <img id="modalImage" src="" alt="" class="w-full h-52 md:h-64 object-cover rounded-t-[13px]">
+        <img id="modalImage" src="" alt="" class="w-full h-72 md:h-96 object-cover object-bottom rounded-t-[13px]">
         <button onclick="closeModal()" class="absolute top-3 right-3 neo-btn bg-white w-9 h-9 rounded-lg flex items-center justify-center">
           <iconify-icon icon="lucide:x" width="18"></iconify-icon>
         </button>
@@ -333,7 +331,6 @@
       </div>
 
       <div class="grid md:grid-cols-5 gap-8">
-        <!-- Contact Info -->
         <div class="md:col-span-2 space-y-5">
           <div class="neo-card bg-white rounded-xl p-5 flex items-start gap-4">
             <div class="w-11 h-11 neo-border bg-neo-pink rounded-lg flex items-center justify-center flex-shrink-0 shadow-neo">
@@ -373,7 +370,6 @@
           </div>
         </div>
 
-        <!-- Contact Form -->
         <div class="md:col-span-3">
           <form id="contactForm" onsubmit="handleSubmit(event)" class="space-y-4 bg-white neo-card rounded-2xl p-6 md:p-8">
             <div class="grid sm:grid-cols-2 gap-4">
@@ -515,7 +511,6 @@
       renderSkills();
     }
 
-    // Mobile Menu
     let menuOpen = false;
     function toggleMobileMenu() {
       menuOpen = !menuOpen;
@@ -528,7 +523,7 @@
       document.getElementById('menuIcon').setAttribute('icon', 'lucide:menu');
     }
 
-    // Media items (replacing projects)
+    // Media items
     const mediaItems = [
       {
         id:1,
@@ -584,13 +579,13 @@
       },
       {
         id:5,
-        image:"https://picsum.photos/seed/osis-school-event-1/800/600.jpg",
-        title_id:"Kegiatan OSIS 1/2", title_en:"OSIS Activity 1/2",
-        tags:["OSIS","Sekolah","Kegiatan"],
-        desc_id:"Ini foto kegiatan OSIS di sekolah. Aku sudah 2 tahun jadi pengurus OSIS, banyak pengalaman berharga yang aku dapat. Dari bikin acara sekolah, koordinasi sama guru, sampai handle berbagai kepanitiaan.",
-        desc_en:"This is a photo of OSIS activities at school. I've been an OSIS member for 2 years, gained many valuable experiences. From organizing school events, coordinating with teachers, to handling various committees.",
-        kategori_id:"OSIS", kategori_en:"OSIS",
-        tanggal:"2024",
+        image:"https://picsum.photos/seed/foto-bersama-teman-sekelas/800/600.jpg",
+        title_id:"Foto Bersama Teman", title_en:"Photo With Friends",
+        tags:["Teman","Bersama","Sekolah"],
+        desc_id:"Ini foto bareng 4 temenku yang paling deket! Ada Saskia, Bunga, Arumi, dan Dara. Kami selalu kompak, dari belajar bareng, jajan bareng, sampai bikin tiktok bareng. Momen-momen seperti ini yang paling aku kenang.",
+        desc_en:"This is a photo with my 4 closest friends! There's Saskia, Bunga, Arumi, and Dara. We're always compact, from studying together, snacking together, to making TikToks together. Moments like these are what I cherish the most.",
+        kategori_id:"Teman", kategori_en:"Friends",
+        tanggal:"2025",
         lokasi_id:"Sekolah", lokasi_en:"School",
         kamera_id:"iPhone", kamera_en:"iPhone",
         color:"bg-neo-blue"
@@ -598,8 +593,8 @@
       {
         id:6,
         image:"https://picsum.photos/seed/osis-team-photo-2/800/600.jpg",
-        title_id:"Kegiatan OSIS 2/2", title_en:"OSIS Activity 2/2",
-        tags:["OSIS","Sekolah","Bersama"],
+        title_id:"Kegiatan OSIS", title_en:"OSIS Activity",
+        tags:["OSIS","Sekolah","Kegiatan"],
         desc_id:"Foto bareng teman-teman OSIS! Ini momen yang paling berkesan karena kami selalu kompak dan solid. Dari rapat yang serius sampai bercanda bareng, semua jadi kenangan yang nggak akan terlupakan.",
         desc_en:"Photo with OSIS friends! This is the most memorable moment because we are always compact and solid. From serious meetings to joking around, everything becomes unforgettable memories.",
         kategori_id:"OSIS", kategori_en:"OSIS",
@@ -615,8 +610,8 @@
       const t = translations[currentLang];
       grid.innerHTML = mediaItems.map(m => `
         <div class="neo-card bg-white rounded-2xl overflow-hidden cursor-pointer group" onclick="openModal(${m.id})">
-          <div class="relative overflow-hidden aspect-[4/3]">
-            <img src="${m.image}" alt="${currentLang==='id'?m.title_id:m.title_en}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="relative overflow-hidden aspect-square">
+            <img src="${m.image}" alt="${currentLang==='id'?m.title_id:m.title_en}" class="w-full h-full object-cover object-bottom group-hover:scale-105 transition-transform duration-500">
             <div class="absolute top-3 left-3">
               <span class="sticker ${m.color} text-white text-[10px] rotate-[-2deg]">${currentLang==='id'?m.kategori_id:m.kategori_en}</span>
             </div>
@@ -639,7 +634,9 @@
       const m = mediaItems.find(x=>x.id===id);
       if(!m) return;
       const t = translations[currentLang];
-      document.getElementById('modalImage').src = m.image;
+      const img = document.getElementById('modalImage');
+      img.src = m.image;
+      img.className = 'w-full h-72 md:h-96 object-cover object-bottom rounded-t-[13px]';
       document.getElementById('modalTitle').textContent = currentLang==='id'?m.title_id:m.title_en;
       document.getElementById('modalDesc').textContent = currentLang==='id'?m.desc_id:m.desc_en;
       document.getElementById('modalTags').innerHTML = m.tags.map(tag=>`<span class="sticker bg-neo-cream text-[10px]">${tag}</span>`).join('');
@@ -659,7 +656,6 @@
     }
     document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
 
-    // Skills
     const skills = [
       { name:"HTML5", icon:"logos:html-5", percent:95, desc_id:"Mahir dalam semantic HTML, accessibility, dan struktur dokumen yang baik.", desc_en:"Proficient in semantic HTML, accessibility, and good document structure." },
       { name:"CSS3", icon:"logos:css-3", percent:92, desc_id:"Expert dalam Flexbox, Grid, animasi, responsive design, dan CSS modern.", desc_en:"Expert in Flexbox, Grid, animations, responsive design, and modern CSS." },
@@ -710,7 +706,6 @@
       document.getElementById('skillScroll').scrollBy({ left: dir*180, behavior:'smooth' });
     }
 
-    // Contact Form
     function handleSubmit(e) {
       e.preventDefault();
       const btn = document.getElementById('submitBtn');
@@ -725,7 +720,6 @@
       }, 1500);
     }
 
-    // Scroll reveal
     const observer = new IntersectionObserver((entries)=>{
       entries.forEach(entry=>{
         if(entry.isIntersecting){ entry.target.classList.add('slide-up'); observer.unobserve(entry.target); }
